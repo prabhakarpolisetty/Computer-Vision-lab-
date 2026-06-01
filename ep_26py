@@ -1,0 +1,28 @@
+import cv2
+
+# Read video
+cap = cv2.VideoCapture(r"C:\Users\pbr22\OneDrive\Desktop\cv_lab\Comedy.mp4")
+
+# Store frames in a list
+frames = []
+
+while True:
+    ret, frame = cap.read()
+
+    if not ret:
+        break
+
+    frames.append(frame)
+
+cap.release()
+
+# Display video in reverse order
+for frame in reversed(frames):
+
+    cv2.imshow("Reverse Video", frame)
+
+    # Press q to quit
+    if cv2.waitKey(30) & 0xFF == ord('q'):
+        break
+
+cv2.destroyAllWindows()
